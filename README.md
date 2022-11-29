@@ -1,0 +1,1 @@
+# Nextjs-shop-template
