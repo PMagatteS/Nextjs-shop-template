@@ -1,1 +1,1 @@
-# Nextjs-shop-template
+An upgrade of one of my previous projects, with nextjs
