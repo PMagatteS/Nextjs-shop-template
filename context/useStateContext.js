@@ -1,11 +1,21 @@
-import {useContext, createContext} from "react"
+import {useContext, createContext, useState} from "react"
 
 const Context = createContext()
 
-const StateContext = () => {
+export const StateContext = ({children}) => {
+    const [items, setItems] = useState([]);
+    const [cartItems, setCartItems] = useState([])
+    const [searchText, setSearchText] = useState("")
+    const [category, setCategory] = useState("")
+    const [subtotal, setSubtotal] = useState(0)
+    const [cardQuantity, setCardQuanity] = useState(1)
+    const [showCart, setShowCart] = useState(false)
     return(
-        <Context.Provider value={}>
+        <Context.Provider value={
+            items
 
+        }>
+            {children}
         </Context.Provider>
     )
 }
