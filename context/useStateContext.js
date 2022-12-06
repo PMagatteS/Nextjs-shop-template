@@ -16,12 +16,37 @@ export const StateContext = ({children}) => {
         setShowCart(!showCart)
     }
 
-    const changeCardQuantity = () => {
-
+    const changeCardQuantity = (action) => {
+        switch (action) {
+            case "increase":
+                setCardQuanity((previous) => previous++)
+                break;
+            case "decrease":
+                if(cardQuantity===1){
+                    return
+                }else{
+                    setCardQuanity((previous) => previous--)
+                }
+                break;
+        
+            default:
+                return
+                break;
+        }
     }
 
-    const changeCartQuantity = (item) => {
-
+    const changeCartQuantity = (item, action, index) => {
+        const newArr = cartItems.filter(item)
+        if(action==="increase"){
+            item.quantity++
+        }else{
+            if (item.quantity===1) {
+                removeCartItem(index)
+                return
+            }
+            item.quantity--
+        }
+        setCartItems((previous) => [...previous, item])
     }
 
     const getSearchText = (e) => {
@@ -52,10 +77,26 @@ export const StateContext = ({children}) => {
 
 
     return(
-        <Context.Provider value={
-            items
-
-        }>
+        <Context.Provider value={{
+            items,
+            cartItems,
+            searchText,
+            searchQuery,
+            category,
+            subtotal,
+            cardQuantity,
+            showCart,
+            showCart,
+            toggleCart,
+            changeCardQuantity,
+            changeCartQuantity,
+            getSearchText,
+            search,
+            chooseCategory,
+            addCartItem,
+            removeCartItem,
+            getSubtotal
+            }}>
             {children}
         </Context.Provider>
     )
