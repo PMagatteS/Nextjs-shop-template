@@ -9,23 +9,25 @@ export const StateContext = ({children}) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [category, setCategory] = useState("");
     const [subtotal, setSubtotal] = useState(0);
-    const [cardQuantity, setCardQuanity] = useState(1);
+    const [itemQuantity, setItemQuanity] = useState(1);
     const [showCart, setShowCart] = useState(false);
 
     const toggleCart = () => {
         setShowCart(!showCart)
     }
 
-    const changeCardQuantity = (action) => {
+
+    const updateItemQuantity = (action) => {
+        // will use this funtion for dynamic pages
         switch (action) {
             case "increase":
-                setCardQuanity((previous) => previous++)
+                setItemQuanity(previous => previous+1)
                 break;
             case "decrease":
-                if(cardQuantity===1){
+                if(itemQuantity===1){
                     return
                 }else{
-                    setCardQuanity((previous) => previous--)
+                    setItemQuanity(previous => previous--)
                 }
                 break;
         
@@ -84,17 +86,18 @@ export const StateContext = ({children}) => {
             searchQuery,
             category,
             subtotal,
-            cardQuantity,
+            itemQuantity,
             showCart,
             showCart,
             toggleCart,
-            changeCardQuantity,
+            updateItemQuantity,
             changeCartQuantity,
             getSearchText,
             search,
             chooseCategory,
             addCartItem,
             removeCartItem,
+            updateItemQuantity,
             getSubtotal
             }}>
             {children}
