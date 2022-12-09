@@ -64,8 +64,11 @@ export const StateContext = ({children}) => {
         setCategory(e.target.value)
     }
 
-    const addCartItem = (item) => {
-        setItems((previous) => [item, ...previous])        
+    const addCartItem = (item, quantity, reset) => {
+        item.quantity = quantity
+        item.added = Date.now()
+        setCartItems((previous) => [item, ...previous])  
+        reset(1)    
     }
 
     const removeCartItem = (index) => {
@@ -73,7 +76,7 @@ export const StateContext = ({children}) => {
         setCartItems(newArr)        
     }
 
-    const getSubtotal = () => {
+    const getSubtotal = (item) => {
          
     }
 

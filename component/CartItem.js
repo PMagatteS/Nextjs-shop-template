@@ -4,7 +4,7 @@ import {
   AiOutlineCloseCircle,
 } from "react-icons/ai";
 
-const CartItem = () => {
+const CartItem = ({item:{quantity, title, image}}) => {
  
   return (
     <div className="cart-items">
@@ -13,12 +13,12 @@ const CartItem = () => {
         <img src={image} alt="" />
       </div>
       <div className="name-quantity">
-        <p className="title"></p>
+        <p className="title">{title}</p>
         <p className="quantity">
           <span className="minus">
             <AiOutlineMinus />
           </span>
-          <span className="product-quantity"></span>
+          <span className="product-quantity">{quantity}</span>
           <span className="plus" >
             <AiOutlinePlus />
           </span>

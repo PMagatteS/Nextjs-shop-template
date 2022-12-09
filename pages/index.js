@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Card from '../component/Card'
-import { useStateContext } from '../context/useStateContext'
+import Layout from '../component/Layout'
+
 
 
 export const getStaticProps = async () => {
@@ -18,9 +19,11 @@ export const getStaticProps = async () => {
 export default function Home({data}) {
 
   return (
+    <Layout >
    <div className="items-container">
    {data.map((el, index) => <Card item={el} index={index} key={index} ></Card>)}
    </div>
+    </Layout>
    
   )
 }

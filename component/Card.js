@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 const Card = ({item, index}) => {
-  // const {addCartItem, getSubtotal} = useStateContext()
+  const {addCartItem, getSubtotal} = useStateContext()
   // it is easier to keep the state and funtions in this component
   const [quantity, setQuantity] = useState(1)
   const increase = () => {
@@ -40,7 +40,7 @@ const Card = ({item, index}) => {
           </span>
         </p>
       </div>
-      <button className="add-to-cart" onClick={null}>
+      <button className="add-to-cart" onClick={() => addCartItem(item, quantity, setQuantity)}>
         add to cart
       </button>
     </div>

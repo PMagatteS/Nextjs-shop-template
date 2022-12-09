@@ -1,10 +1,11 @@
 import Searchbar from "./Searchbar";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-
-const Navbar = () => {
+import { AiOutlineShoppingCart, AiOutlineArrowLeft } from "react-icons/ai";
+import Link from "next/link";
+const Navbar = ({isHome}) => {
   return (
     <div className="navbar">
-      <Searchbar></Searchbar>
+      
+      {isHome?<Searchbar></Searchbar>:<Link href="/" className="back-home"><AiOutlineArrowLeft className="back-arrow"></AiOutlineArrowLeft></Link>}
       <div
         className="cart-icon"
         data-qty=""

@@ -39,6 +39,20 @@ border: 1px white solid;
 box-sizing: border-box;
 }
 
+.back-arrow{
+  color: white;
+    width: 2em;
+    height: 2em;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+  .back-home{
+    display: flex;
+    margin-right: auto;
+    margin-block: auto;
+    margin-left: 1em;    
+}
 
 .cart-overlay{
   width: 100%;
