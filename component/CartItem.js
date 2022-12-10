@@ -3,31 +3,33 @@ import {
   AiOutlinePlus,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
+import { useStateContext } from "../context/useStateContext";
 
-const CartItem = ({item:{quantity, title, image}}) => {
- 
+const CartItem = ({item, index}) => {
+ const {removeCartItem, updateCartItem} = useStateContext()
   return (
     <div className="cart-items">
       <div className="cart-image">
         {/* will replace with next image */}
-        <img src={image} alt="" />
+        <img src={item.image} alt="" />
       </div>
       <div className="name-quantity">
-        <p className="title">{title}</p>
+        <p className="title">{item.title}</p>
         <p className="quantity">
           <span className="minus">
-            <AiOutlineMinus />
+            <AiOutlineMinus onClick={() =>updateCartItem(item, "decrease")}/>
           </span>
-          <span className="product-quantity">{quantity}</span>
+          <span className="product-quantity">{item.quantity}</span>
           <span className="plus" >
-            <AiOutlinePlus />
+            <AiOutlinePlus onClick={() =>updateCartItem(item, "increase")}/>
           </span>
         </p>
       </div>
-      <div className="total">Total: $</div>
+      <div className="total">Total: ${item.price*item.quantity}</div>
       <div className="delete">
         <AiOutlineCloseCircle
           className="delete-icon"
+          onClick={() => removeCartItem(item, index)}
         ></AiOutlineCloseCircle>
       </div>
     </div>

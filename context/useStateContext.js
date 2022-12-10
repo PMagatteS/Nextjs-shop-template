@@ -64,20 +64,60 @@ export const StateContext = ({children}) => {
         setCategory(e.target.value)
     }
 
-    const addCartItem = (item, quantity, reset) => {
-        item.quantity = quantity
+    const addCartItem = (item, qty, reset) => {
+        const check = cartItems.find((el) => el.id === item.id);
+        if(check){
+            setCartItems((previous) => previous.map((el) => {
+                     if (el.id===item.id) {
+                        return {...el, quantity : el.quantity+qty}                        
+                    }}))
+                    if (qty!==1) {
+                        reset(1)    
+                    }
+                    getSubtotal("increase", item.price*qty)
+                         return
+        }
+        item.quantity = qty
         item.added = Date.now()
+        getSubtotal("increase", item.price*qty)
         setCartItems((previous) => [item, ...previous])  
         reset(1)    
     }
 
-    const removeCartItem = (index) => {
+    const removeCartItem = (item,index) => {
+        getSubtotal("decrease", item.quantity*item.price)
         const newArr = cartItems.filter((_, i) => i !== index);
         setCartItems(newArr)        
     }
 
-    const getSubtotal = (item) => {
-         
+    const updateCartItem = (item, action) => {
+        if (action==="increase") {
+            setCartItems((previous) => previous.map((el) => {
+                if (el.id===item.id) {
+                   return {...el, quantity : el.quantity+1}                        
+               }}))
+               getSubtotal("increase", item.price)
+               
+            } else {
+                if (item.quantity===1) {
+                    return
+                }
+                setCartItems((previous) => previous.map((el) => {
+                    if (el.id===item.id) {
+                        return {...el, quantity : el.quantity-1}                        
+                    }}))
+                    getSubtotal("decrease", item.price)
+            
+        }
+
+    }
+
+    const getSubtotal = (action, balance) => {
+         if (action==="increase") {
+            setSubtotal((previous) => previous+balance)
+        } else {
+            setSubtotal((previous) => previous-balance)            
+         }
     }
 
 
@@ -101,7 +141,8 @@ export const StateContext = ({children}) => {
             addCartItem,
             removeCartItem,
             updateItemQuantity,
-            getSubtotal
+            getSubtotal,
+            updateCartItem
             }}>
             {children}
         </Context.Provider>
