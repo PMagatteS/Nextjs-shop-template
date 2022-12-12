@@ -35,7 +35,7 @@ const Card = ({item, index}) => {
           </span>
           <span className="product-quantity">{quantity}</span>
           <span className="plus">
-            {/* <AiOutlinePlus onClick={()=> changeCardQuantity('increase')}/> */}
+
             <AiOutlinePlus onClick={increase}/>
           </span>
         </p>

@@ -1,0 +1,76 @@
+.itemGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 80%;
+  margin-top: 5em;
+}
+.itemImage{
+  width: 400px;
+  height: 400px;
+  grid-row-start: 1;
+  grid-row-end: 6; 
+  justify-self: center;
+  
+}
+
+
+.addToCart{
+  background: black;
+color: white;
+border: none;
+height: 2rem;
+width: 75%;
+}
+
+.gridCentered{
+  justify-self: center;
+}
+
+.itemQuantity{
+  grid-row-start: 7;
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+  background: #faebd7b0;
+  border-radius: 100vh;
+  width: 10em;
+  height: 3em;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityText{
+  font-size: 2em;
+}
+
+.updateQuantity{
+  background: black;
+    color: beige;
+    width: 2em;
+    height: 2em;
+    border-radius: 100vh;
+}
+
+.itemTitle{
+
+}
+
+.itemPrice{
+
+}
+
+.itemDescription{
+
+}
+
+.itemRating{
+  
+}
+
+@media (max-width: 600px) {
+  .itemGrid{
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
