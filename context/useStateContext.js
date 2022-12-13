@@ -26,9 +26,8 @@ export const StateContext = ({children}) => {
             case "decrease":
                 if(itemQuantity===1){
                     return
-                }else{
-                    setItemQuanity(previous => previous--)
                 }
+                setItemQuanity(previous => previous-1)
                 break;
         
             default:

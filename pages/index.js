@@ -6,7 +6,7 @@ import Layout from '../component/Layout'
 
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://fakestoreapi.com/products?limit=2");
+  const res = await fetch("https://fakestoreapi.com/products?limit=20");
   const data = await res.json()
   data.map((el) => el.quantity = 1)
 

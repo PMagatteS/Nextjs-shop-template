@@ -17,10 +17,12 @@
 
 .addToCart{
   background: black;
-color: white;
-border: none;
-height: 2rem;
-width: 75%;
+  border-radius: 1em;
+  color: white;
+  border: none;
+  height: 2rem;
+  width: 75%;
+  margin: auto;
 }
 
 .gridCentered{
@@ -50,27 +52,53 @@ width: 75%;
     width: 2em;
     height: 2em;
     border-radius: 100vh;
+    cursor: pointer;
 }
 
-.itemTitle{
-
-}
 
 .itemPrice{
-
+  font-size: 18px;
+  font-style: italic;
+  font-family: fantasy;
 }
 
 .itemDescription{
-
+  background: #7a428d26;
+  text-align: center;
+  border-radius: 1em;
+  padding: 0.5em;
+  font-style: oblique;
+  font-family: cursive;
 }
 
 .itemRating{
-  
 }
 
 @media (max-width: 600px) {
   .itemGrid{
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
   }
+
+  .itemPrice{
+    grid-column: 2;
+    grid-row: 7;
+    text-align: center;
+  }
+  
+  .itemTitle{
+    width: 100%;
+    text-align: center;
+  }
+  
+  .addToCart{
+    margin: auto;
+    grid-row: 8;
+  }
+  
+  .itemRating, .itemDescription, .itemTitle, .addToCart, .itemImage{
+    grid-column: 1/ span 2;    
+  }
+
+  
 }

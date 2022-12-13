@@ -167,6 +167,7 @@ input[type= "search"]{
   width: 13rem;
   animation: appear .5s linear;
   background: white;
+  border-radius: 1em;
   
 }
 
@@ -189,10 +190,23 @@ input[type= "search"]{
   margin: auto;
 }
 
+.info-button{
+    width: 1.2em;
+    height: 1.2em;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  
+  .info-button:hover{
+  width: 1.4em;
+  height: 1.4em;
+}
 
 .card-img{
   width: auto;
   height: 9rem;
+  position: relative;
 
 }
 
@@ -211,6 +225,8 @@ input[type= "search"]{
   color: white;
   width: 100%;
   cursor: pointer;
+  border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
 }
 .add-to-cart:active{
   background: white;
@@ -251,14 +267,22 @@ box-sizing: border-box;
 .category > select:hover{
   border: 2px white solid;
  }
+ 
+ .quantity{
+  display: flex;
+  gap: 10px;
+ }
+
 .plus, .minus{
   color: white;
-  background: black;
+  background: blue;
   cursor: pointer;
+  height: 1.2em;
+  width: 1.2em;
 }
 
 .product-quantity{
-  margin: 2px;
+  margin: auto;
 }
 
 .cart-items{

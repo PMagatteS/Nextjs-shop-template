@@ -1,5 +1,6 @@
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineInfoCircle } from "react-icons/ai";
 import Image from "next/image";
+import Link from "next/link";
 import { useStateContext } from "../context/useStateContext";
 import { useState } from "react";
 
@@ -20,23 +21,25 @@ const Card = ({item, index}) => {
 
    return (
     <div className="card">
+      <Link href={"/item/"+item.id}>
       <div className="card-img">
-
+      <AiOutlineInfoCircle className="info-button"></AiOutlineInfoCircle>
       <img src={item.image} alt="" />
       {/* need to learn about domain configuration for images */}
         {/* <Image src={item.image} fill={true} alt={item.title} ></Image> */}
       </div>
+      </Link>
       <p className="title">{item.title}</p>
       <div className="product-price">
         <p className="price">{item.price}</p>
         <p className="quantity">
-          <span className="minus">
-            <AiOutlineMinus onClick={decrease}/>
+          <span >
+            <AiOutlineMinus className="minus" onClick={decrease}/>
           </span>
           <span className="product-quantity">{quantity}</span>
-          <span className="plus">
+          <span >
 
-            <AiOutlinePlus onClick={increase}/>
+            <AiOutlinePlus className="plus" onClick={increase}/>
           </span>
         </p>
       </div>
