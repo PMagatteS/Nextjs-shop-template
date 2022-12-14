@@ -16,12 +16,12 @@ const CartItem = ({item, index}) => {
       <div className="name-quantity">
         <p className="title">{item.title}</p>
         <p className="quantity">
-          <span className="minus">
-            <AiOutlineMinus onClick={() =>updateCartItem(item, "decrease")}/>
+          <span >
+            <AiOutlineMinus className="minus" onClick={() =>updateCartItem(item, "decrease")}/>
           </span>
           <span className="product-quantity">{item.quantity}</span>
-          <span className="plus" >
-            <AiOutlinePlus onClick={() =>updateCartItem(item, "increase")}/>
+          <span  >
+            <AiOutlinePlus className="plus" onClick={() =>updateCartItem(item, "increase")}/>
           </span>
         </p>
       </div>

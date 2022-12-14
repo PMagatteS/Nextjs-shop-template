@@ -4,6 +4,7 @@ import style  from "../../styles/Item.module.css";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import ReactStars from "react-rating-stars-component"
 import { useStateContext } from '../../context/useStateContext';
+import Image from 'next/image';
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://fakestoreapi.com/products?limit=20");
@@ -28,14 +29,14 @@ export const getStaticProps = async  ({params}) => {
 }
 
 export default function Product({item}) {
-  const {itemQuantity, updateItemQuantity} = useStateContext()
+  const {itemQuantity, setItemQuantity, addCartItem, updateItemQuantity} = useStateContext()
     return (
         <Layout>
 
            <div className={style.itemGrid}>
   
   <div className={style.itemImage}>
-    <img src={item.image}/>
+  <Image src={item.image} fill={true} alt={item.title} ></Image>
   </div>
   <div class={style.itemTitle}>
     <h2>
@@ -51,7 +52,7 @@ export default function Product({item}) {
 
     </ReactStars>
   </div>
-  <div class={style.itemPrice}>
+  <div className={style.itemPrice}>
     <p>${item.price}</p>
   </div>
   <div class={style.itemDescription}>{item.description}</div>
@@ -67,7 +68,7 @@ export default function Product({item}) {
           </div>
         </div>
   
-      <button class={style.addToCart}>Add to cart</button>
+      <button class={style.addToCart} onClick={() => addCartItem(item, itemQuantity, setItemQuantity)}>Add to cart</button>
      </div>
   
         

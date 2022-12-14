@@ -9,7 +9,7 @@ export const StateContext = ({children}) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [category, setCategory] = useState("");
     const [subtotal, setSubtotal] = useState(0);
-    const [itemQuantity, setItemQuanity] = useState(1);
+    const [itemQuantity, setItemQuantity] = useState(1);
     const [showCart, setShowCart] = useState(false);
 
     const toggleCart = () => {
@@ -21,13 +21,13 @@ export const StateContext = ({children}) => {
         // will use this funtion for dynamic pages
         switch (action) {
             case "increase":
-                setItemQuanity(previous => previous+1)
+                setItemQuantity(previous => previous+1)
                 break;
             case "decrease":
                 if(itemQuantity===1){
                     return
                 }
-                setItemQuanity(previous => previous-1)
+                setItemQuantity(previous => previous-1)
                 break;
         
             default:
@@ -131,6 +131,7 @@ export const StateContext = ({children}) => {
             itemQuantity,
             showCart,
             showCart,
+            setItemQuantity,
             toggleCart,
             updateItemQuantity,
             changeCartQuantity,

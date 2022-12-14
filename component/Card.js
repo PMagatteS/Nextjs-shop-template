@@ -24,9 +24,7 @@ const Card = ({item, index}) => {
       <Link href={"/item/"+item.id}>
       <div className="card-img">
       <AiOutlineInfoCircle className="info-button"></AiOutlineInfoCircle>
-      <img src={item.image} alt="" />
-      {/* need to learn about domain configuration for images */}
-        {/* <Image src={item.image} fill={true} alt={item.title} ></Image> */}
+        <Image src={item.image} fill={true} alt={item.title} ></Image>
       </div>
       </Link>
       <p className="title">{item.title}</p>

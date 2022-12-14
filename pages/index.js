@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 export default function Home({data}) {
 
   return (
-    <Layout >
+    <Layout home>
    <div className="items-container">
    {data.map((el, index) => <Card item={el} index={index} key={index} ></Card>)}
    </div>
