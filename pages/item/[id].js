@@ -38,12 +38,12 @@ export default function Product({item}) {
   <div className={style.itemImage}>
   <Image src={item.image} fill={true} alt={item.title} ></Image>
   </div>
-  <div class={style.itemTitle}>
+  <div className={style.itemTitle}>
     <h2>
       {item.title}
     </h2>
   </div>
-  <div class={style.itemRating}>
+  <div className={style.itemRating}>
     <ReactStars 
     edit={false}
     size={30}
@@ -55,7 +55,7 @@ export default function Product({item}) {
   <div className={style.itemPrice}>
     <p>${item.price}</p>
   </div>
-  <div class={style.itemDescription}>{item.description}</div>
+  <div className={style.itemDescription}>{item.description}</div>
  
   <div className={style.itemQuantity}>
           <div>
@@ -68,7 +68,7 @@ export default function Product({item}) {
           </div>
         </div>
   
-      <button class={style.addToCart} onClick={() => addCartItem(item, itemQuantity, setItemQuantity)}>Add to cart</button>
+      <button className={style.addToCart} onClick={() => addCartItem(item, itemQuantity, setItemQuantity)}>Add to cart</button>
      </div>
   
         

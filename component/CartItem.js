@@ -4,14 +4,14 @@ import {
   AiOutlineCloseCircle,
 } from "react-icons/ai";
 import { useStateContext } from "../context/useStateContext";
+import Image from "next/image";
 
 const CartItem = ({item, index}) => {
  const {removeCartItem, updateCartItem} = useStateContext()
   return (
     <div className="cart-items">
       <div className="cart-image">
-        {/* will replace with next image */}
-        <img src={item.image} alt="" />
+        <Image src={item.image} fill={true} alt={item.title}></Image>
       </div>
       <div className="name-quantity">
         <p className="title">{item.title}</p>

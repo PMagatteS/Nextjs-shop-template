@@ -1,13 +1,14 @@
-import {useContext, createContext, useState} from "react"
+import {useContext, createContext, useState, useEffect} from "react"
 
 const Context = createContext()
 
 export const StateContext = ({children}) => {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState([])
     const [cartItems, setCartItems] = useState([]);
     const [searchText, setSearchText] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
     const [category, setCategory] = useState("");
+    const [categories, setCategories] = useState([])
     const [subtotal, setSubtotal] = useState(0);
     const [itemQuantity, setItemQuantity] = useState(1);
     const [showCart, setShowCart] = useState(false);
@@ -31,8 +32,7 @@ export const StateContext = ({children}) => {
                 break;
         
             default:
-                return
-                break;
+                return null
         }
     }
 
@@ -59,6 +59,17 @@ export const StateContext = ({children}) => {
         setSearchQuery(searchText)
 
     }
+
+    const getCategories = () => {
+        const values = []
+        items.map((el) => {
+            if(!values.includes(el.category)){
+                values.push(el.category)
+            }
+        })
+        return setCategories(values)
+    }
+
     const chooseCategory = (e) => {
         setCategory(e.target.value)
     }
@@ -119,6 +130,10 @@ export const StateContext = ({children}) => {
          }
     }
 
+    useEffect(() => {
+        getCategories()
+     
+      }, [items]);
 
     return(
         <Context.Provider value={{
@@ -131,6 +146,8 @@ export const StateContext = ({children}) => {
             itemQuantity,
             showCart,
             showCart,
+            categories,
+            setItems,
             setItemQuantity,
             toggleCart,
             updateItemQuantity,
@@ -138,6 +155,7 @@ export const StateContext = ({children}) => {
             getSearchText,
             search,
             chooseCategory,
+            getCategories,
             addCartItem,
             removeCartItem,
             updateItemQuantity,
