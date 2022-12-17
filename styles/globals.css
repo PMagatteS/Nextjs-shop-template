@@ -269,6 +269,7 @@ box-sizing: border-box;
  background:#180485;
  color: white;
  border: none;
+ margin-left: 1em;
 }
 .category > select:hover{
   border: 2px white solid;
@@ -387,6 +388,7 @@ box-sizing: border-box;
   }
   .items-container{
     grid-template-columns: 1fr 1fr;
+    margin: 1em 0;
   }
   .price{
     font-size: 1em;

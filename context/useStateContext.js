@@ -12,6 +12,7 @@ export const StateContext = ({children}) => {
     const [subtotal, setSubtotal] = useState(0);
     const [itemQuantity, setItemQuantity] = useState(1);
     const [showCart, setShowCart] = useState(false);
+    const [filterBy, setFilterBy] = useState("")
 
     const toggleCart = () => {
         setShowCart(!showCart)
@@ -34,20 +35,6 @@ export const StateContext = ({children}) => {
             default:
                 return null
         }
-    }
-
-    const changeCartQuantity = (item, action, index) => {
-        const newArr = cartItems.filter(item)
-        if(action==="increase"){
-            item.quantity++
-        }else{
-            if (item.quantity===1) {
-                removeCartItem(index)
-                return
-            }
-            item.quantity--
-        }
-        setCartItems((previous) => [...previous, item])
     }
 
     const getSearchText = (e) => {
@@ -74,7 +61,7 @@ export const StateContext = ({children}) => {
         setCategory(e.target.value)
     }
 
-    const addCartItem = (item, qty, reset) => {
+    const addCartItem = (e=null,item, qty, reset) => {
         const check = cartItems.find((el) => el.id === item.id);
         if(check){
             setCartItems((previous) => previous.map((el) => {
@@ -91,7 +78,10 @@ export const StateContext = ({children}) => {
         item.added = Date.now()
         getSubtotal("increase", item.price*qty)
         setCartItems((previous) => [item, ...previous])  
-        reset(1)    
+        reset(1)   
+        if(e){
+         cardAnimation(e) 
+        }
     }
 
     const removeCartItem = (item,index) => {
@@ -130,6 +120,23 @@ export const StateContext = ({children}) => {
          }
     }
 
+    const filter = (e) => {
+        setFilterBy(e.target.value)
+    }
+
+    const cardAnimation = (e) => {
+        const top = e.target.offsetParent.offsetTop;
+        const left = e.target.offsetParent.offsetLeft;
+        const bodyWidth = document.body.offsetWidth;
+        const root = document.documentElement;
+        const cardWidth = e.target.offsetParent.offsetWidth;
+        root.style.setProperty("--top-card", top + "px");
+        root.style.setProperty("--left-card", left + "px");
+        root.style.setProperty("--destination", bodyWidth - cardWidth + "px");
+        e.target.parentElement.classList.add("buyed");
+        setTimeout(() => e.target.parentElement.classList.remove("buyed"), 500);
+    }
+
     useEffect(() => {
         getCategories()
      
@@ -147,11 +154,12 @@ export const StateContext = ({children}) => {
             showCart,
             showCart,
             categories,
+            filterBy,
+            filter,
             setItems,
             setItemQuantity,
             toggleCart,
             updateItemQuantity,
-            changeCartQuantity,
             getSearchText,
             search,
             chooseCategory,

@@ -80,6 +80,13 @@
 .itemRating{
 }
 
+.itemTitle>h2::before{
+  content: open-quote;
+}
+.itemTitle>h2::after{
+  content: close-quote;
+}
+
 @media (max-width: 700px) {
   .itemGrid{
     grid-template-columns: 1fr 1fr;

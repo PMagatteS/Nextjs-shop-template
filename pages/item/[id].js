@@ -68,7 +68,7 @@ export default function Product({item}) {
           </div>
         </div>
   
-      <button className={style.addToCart} onClick={() => addCartItem(item, itemQuantity, setItemQuantity)}>Add to cart</button>
+      <button className={style.addToCart} onClick={(e) => addCartItem(false, item, itemQuantity, setItemQuantity)}>Add to cart</button>
      </div>
   
         

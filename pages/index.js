@@ -17,16 +17,28 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({data}) {
-  const {searchQuery, category, items, setItems} = useStateContext()
+  const {searchQuery, category, items, setItems, filterBy} = useStateContext()
   setItems(data)
   return (
     <Layout home>
    <div className="items-container">
-   {items.filter(
+   {items.sort((a, b)=>{ if (filterBy==="Highest") {
+    return  b.price - a.price
+   } else if(filterBy==="Lowest") {
+     return a.price - b.price
+  }else if(filterBy==="Ascending") {
+     return a.title > b.title&& -1
+    }else if(filterBy==="Descending") {
+     return b.title > a.title&& -1
+   }else if(filterBy==="Most rated") {
+    return b.rating.rate - a.rating.rate
+   }else return a.id - b.id
+  })       
+             .filter(
               (item) =>
                 item.title.includes(searchQuery) &&
                 item.category.startsWith(category)
-            )
+            )      
             .map((el, index) => <Card item={el} index={index} key={index} ></Card>)}
    </div>
     </Layout>
