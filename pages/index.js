@@ -22,7 +22,7 @@ export default function Home({data}) {
   return (
     <Layout home>
    <div className="items-container">
-   {items.sort((a, b)=>{ if (filterBy==="Highest") {
+   {/* {items.sort((a, b)=>{ if (filterBy==="Highest") {
     return  b.price - a.price
    } else if(filterBy==="Lowest") {
      return a.price - b.price
@@ -39,7 +39,7 @@ export default function Home({data}) {
                 item.title.includes(searchQuery) &&
                 item.category.startsWith(category)
             )      
-            .map((el, index) => <Card item={el} index={index} key={index} ></Card>)}
+            .map((el, index) => <Card item={el} index={index} key={index} ></Card>)} */}
    </div>
     </Layout>
    

@@ -8,12 +8,12 @@ const Navbar = ({isHome}) => {
     <div className="navbar">
       
       {isHome?<Searchbar></Searchbar>:<Link href="/" className="back-home"><AiOutlineArrowLeft className="back-arrow"></AiOutlineArrowLeft></Link>}
-      <div
-        className="cart-icon"
-        data-qty={cartItems.length}
-      >
-        <AiOutlineShoppingCart color="white" size={30} onClick={toggleCart}></AiOutlineShoppingCart>
-      </div>
+ 
+          <div  className="cart-icon" data-qty={cartItems.length}>
+        <AiOutlineShoppingCart    onClick={toggleCart}>
+
+        </AiOutlineShoppingCart>
+          </div>
     </div>
   );
 };
