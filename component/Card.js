@@ -28,7 +28,7 @@ const Card = ({item, index}) => {
       </div>
       </Link>
       <p className="title">{item.title}</p>
-      <div className="product-price">
+     
         <p className="price">${item.price}</p>
         <p className="quantity">
           <span >
@@ -40,7 +40,7 @@ const Card = ({item, index}) => {
             <AiOutlinePlus className="plus" onClick={increase}/>
           </span>
         </p>
-      </div>
+     
       <button className="add-to-cart" onClick={(e) => addCartItem(e,item, quantity, setQuantity)}>
         add to cart
       </button>

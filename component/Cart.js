@@ -8,7 +8,7 @@ const {cartItems, toggleCart, subtotal} = useStateContext()
   return (
     
     <div className="cart-container">
-      <div className="cart-overlay"></div>
+      <div className="cart-overlay" onClick={toggleCart}></div>
       <div className="cart">
         <div className="cart-banner">
           <BiArrowBack className="cart-back" onClick={toggleCart}></BiArrowBack>
