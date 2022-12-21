@@ -11,11 +11,11 @@ const CartItem = ({item, index}) => {
   return (
     <div className="cart-items">
       <div className="cart-image">
-        <Image src={item.image} fill={true} alt={item.title}></Image>
+        <Image src={item.image} fill={true}  style={{ objectFit: "contain" }} alt={item.title}></Image>
       </div>
-      <div className="name-quantity">
-        <p className="title">{item.title}</p>
-        <p className="quantity">
+ 
+        <p className="title cart-title">{item.title}</p>
+        <p className="cart-quantity">
           <span >
             <AiOutlineMinus className="minus" onClick={() =>updateCartItem(item, "decrease")}/>
           </span>
@@ -24,8 +24,8 @@ const CartItem = ({item, index}) => {
             <AiOutlinePlus className="plus" onClick={() =>updateCartItem(item, "increase")}/>
           </span>
         </p>
-      </div>
-      <div className="total">Total: ${item.price*item.quantity}</div>
+    
+      <div className="total">Total: ${(item.price*item.quantity).toFixed(2)}</div>
       <div className="delete">
         <AiOutlineCloseCircle
           className="delete-icon"

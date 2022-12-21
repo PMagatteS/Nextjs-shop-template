@@ -166,14 +166,40 @@ input[type= "search"]{
 
 .cart-items{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: 1fr 1fr;
   justify-content: center;
   align-items: center;
   height: 7em;
 }
 
+.cart-image{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 1/span 2;
+}
 
+.cart-title{
+  grid-column: 2/span 3!important;
+  grid-row:  1!important;
+}
+
+.cart-quantity{
+  display: flex;
+  gap: 15px;
+  width: fit-content;
+}
+
+.delete{
+  font-size: 2em;
+  color: red;
+  grid-column: 4;
+  grid-row: 1/span 2;
+  margin-left: auto;
+  cursor: pointer;
+}
 /* config bar */
 
 .configbar{
@@ -293,4 +319,30 @@ select:hover{
   background: var(--primary-color);
   cursor: pointer;
   font-size: 1.2em;
+}
+
+/* Animations */
+
+.buyed{
+  transform: scale(.5);
+  animation-name: buyed;
+  animation-duration: .5s;
+}
+
+@keyframes buyed {
+  0%{
+    position: absolute;
+      top: var(--top-card);
+    left: var(--left-card);}
+  100%{
+  position: absolute;
+  top: 0px;
+  left: var(--destination);
+
+}
+
+}
+@keyframes appear {
+  0%{transform: scale(0);}
+  100%{transform: scale(1);}
 }

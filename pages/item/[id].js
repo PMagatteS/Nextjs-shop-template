@@ -36,7 +36,7 @@ export default function Product({item}) {
            <div className={style.itemGrid}>
   
   <div className={style.itemImage}>
-  <Image src={item.image} fill={true} alt={item.title} ></Image>
+  <Image src={item.image} fill={true} style={{ objectFit: "contain" }} alt={item.title} ></Image>
   </div>
   <div className={style.itemTitle}>
     <h2>

@@ -61,7 +61,7 @@ export const StateContext = ({children}) => {
         setCategory(e.target.value)
     }
 
-    const addCartItem = (e=null,item, qty, reset) => {
+    const addCartItem = (e,item, qty, reset) => {
         const check = cartItems.find((el) => el.id === item.id);
         if(check){
             setCartItems((previous) => previous.map((el) => {
@@ -86,29 +86,35 @@ export const StateContext = ({children}) => {
 
     const removeCartItem = (item,index) => {
         getSubtotal("decrease", item.quantity*item.price)
-        const newArr = cartItems.filter((_, i) => i !== index);
-        setCartItems(newArr)        
+        setCartItems((previous) => previous.filter((_, i) => i !== index))        
     }
 
     const updateCartItem = (item, action) => {
+
         if (action==="increase") {
-            setCartItems((previous) => previous.map((el) => {
+            getSubtotal("increase", item.price)
+            setCartItems(previous => previous.map((el) => {
                 if (el.id===item.id) {
                    return {...el, quantity : el.quantity+1}                        
-               }}))
-               getSubtotal("increase", item.price)
+               }
+               return el}
+               ))
                
-            } else {
+            }
+             else {
                 if (item.quantity===1) {
                     return
                 }
-                setCartItems((previous) => previous.map((el) => {
-                    if (el.id===item.id) {
-                        return {...el, quantity : el.quantity-1}                        
-                    }}))
-                    getSubtotal("decrease", item.price)
+                getSubtotal("decrease", item.price)
+                setCartItems(previous => previous.map((el) => {
+                if (el.id===item.id) {
+                   return {...el, quantity : el.quantity-1}                        
+               }
+               return el}
+               ))
             
         }
+               
 
     }
 

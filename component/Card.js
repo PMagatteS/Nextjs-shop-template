@@ -24,7 +24,7 @@ const Card = ({item, index}) => {
       <Link href={"/item/"+item.id}>
       <div className="card-img">
       <AiOutlineInfoCircle className="info-button"></AiOutlineInfoCircle>
-        <Image src={item.image} fill={true} alt={item.title} ></Image>
+        <Image src={item.image} fill={true} style={{ objectFit: "contain" }} alt={item.title} ></Image>
       </div>
       </Link>
       <p className="title">{item.title}</p>
