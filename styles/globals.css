@@ -171,6 +171,8 @@ input[type= "search"]{
   justify-content: center;
   align-items: center;
   height: 7em;
+  box-shadow: 13px 7px 5px 4px #9b9999;
+  margin-block: 1em;
 }
 
 .cart-image{
@@ -199,6 +201,31 @@ input[type= "search"]{
   grid-row: 1/span 2;
   margin-left: auto;
   cursor: pointer;
+}
+
+.checkout{
+    display: flex;
+    position: fixed;
+    bottom: 1em;
+    width: clamp(200px, 100%, 600px);
+    right: 0;
+}
+
+.checkout-button{
+    background: red;
+    width: 60%;
+    height: 2rem;
+    color: var(--font-color);
+    box-shadow: 0 2px 5px 0 rgba(213 ,217 ,217 ,.5);
+    border: 0;
+    margin: auto;
+    border-radius: 100vh;
+    transition: transform .3s ease-in-out;
+}
+
+.checkout-button:hover{
+  transform: scale(1.1);
+  background: green;
 }
 /* config bar */
 

@@ -15,7 +15,8 @@ export const StateContext = ({children}) => {
     const [filterBy, setFilterBy] = useState("")
 
     const toggleCart = () => {
-        setShowCart(!showCart)
+        setShowCart(!showCart);
+        document.body.classList.toggle("no-scroll");
     }
 
 
