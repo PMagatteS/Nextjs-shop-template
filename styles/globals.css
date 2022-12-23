@@ -171,7 +171,7 @@ input[type= "search"]{
   justify-content: center;
   align-items: center;
   height: 7em;
-  box-shadow: 13px 7px 5px 4px #9b9999;
+  box-shadow: 15px 5px 5px 2px #9b9999;
   margin-block: 1em;
 }
 
