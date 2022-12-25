@@ -3,6 +3,7 @@ import Navbar from "./Navbar"
 import Configbar from "./Configbar"
 import Cart from "./Cart"
 import { useStateContext } from "../context/useStateContext";
+import ThemePicker from "./ThemePicker";
 
 const Layout = ({children, home}) => {
     const {showCart} = useStateContext()
@@ -15,6 +16,7 @@ const Layout = ({children, home}) => {
         {showCart&&<Cart></Cart>}
 
         {children}
+        <ThemePicker/>
         </>
     );
 };
