@@ -12,13 +12,30 @@ export const StateContext = ({children}) => {
     const [subtotal, setSubtotal] = useState(0);
     const [itemQuantity, setItemQuantity] = useState(1);
     const [showCart, setShowCart] = useState(false);
-    const [filterBy, setFilterBy] = useState("")
+    const [showPicker, setShowPicker] = useState(false)
+    const [filterBy, setFilterBy] = useState("");
+    const themes = {
+        colors: ["#180485", "#A4262C", "#CA5010", "#8F7034", "#407855", "#038387", "#0078D4", "#40587C", "#4052AB", "#854085"],
+        fonts : ["#faebd7", "#FFFFFF", "#F4F4F4", "#D0D0D0", "#3C3C3C", "#9ADFE1", "#C17EFF", "#FF94A9", "#CFCA88", "#000000"],
+    }
 
     const toggleCart = () => {
         setShowCart(!showCart);
         document.body.classList.toggle("no-scroll");
     }
 
+    const togglePicker = () => {
+        setShowPicker(!showPicker) 
+    }
+
+    const setThemeColors = (value, action) => {
+        const root = document.documentElement;
+        if(action==="theme"){
+            root.style.setProperty("--primary-color", value);
+        }else if(action==='font') {
+            root.style.setProperty("--font-color", value);
+        }
+    }
 
     const updateItemQuantity = (action) => {
         // will use this funtion for dynamic pages
@@ -162,10 +179,13 @@ export const StateContext = ({children}) => {
             showCart,
             categories,
             filterBy,
+            showPicker,
+            themes,
             filter,
             setItems,
             setItemQuantity,
             toggleCart,
+            togglePicker,
             updateItemQuantity,
             getSearchText,
             search,
@@ -175,7 +195,8 @@ export const StateContext = ({children}) => {
             removeCartItem,
             updateItemQuantity,
             getSubtotal,
-            updateCartItem
+            updateCartItem,
+            setThemeColors,
             }}>
             {children}
         </Context.Provider>
