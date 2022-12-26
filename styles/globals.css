@@ -1,4 +1,8 @@
 /* body root and global */
+*{
+  box-sizing: border-box;
+}
+
 :root{
   --top-card: none;
   --left-card: none;
@@ -9,10 +13,35 @@
   --round-corner: 100vh;
   --cart-color: white;
   --body: white;
+  --light-mode: #f0ff00;
+  --dark-mode: #00000070
+  
 }
 
-*{
-  box-sizing: border-box;
+:root.light{
+  --primary-color: #180485;
+  --secondary-color: #8B81C1;
+  --font-color: #faebd7;
+  --round-corner: 100vh;
+  --cart-color: white;
+  --body: white;
+  --light-mode: #f0ff00;
+  --dark-mode: #00000070
+}
+
+:root.dark{
+  --primary-color: #102A43;
+  --secondary-color: #CBD2D9;
+  --font-color: #faebd7;
+  --round-corner: 100vh;
+  --cart-color: #d0d0d0;
+  --body: #323F4B;
+  --light-mode: #00000070;
+  --dark-mode: #d0ecea;
+}
+
+body{
+  background: var(--body);
 }
 
 ::-webkit-scrollbar {
@@ -286,6 +315,7 @@ select:hover{
   border-top: 1px solid var(--primary-color);  
   align-items: center;
   justify-items: center;
+  background: white;
 }
 
 .card:hover{
@@ -407,6 +437,20 @@ h5{
   gap: 10px;
 }
 
+.dark-light-mode{
+  margin-top: 0.5em;
+  font-size: .9em;
+  display: flex;
+  gap: 15px;
+}
+
+.dark-mode{
+  color: var(--dark-mode);
+}
+
+.light-mode{
+  color: var(--light-mode);
+}
 /* Animations */
 
 .buyed{

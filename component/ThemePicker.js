@@ -1,12 +1,17 @@
 import React from 'react';
 import {MdBrush, MdClose} from 'react-icons/md'
 import { useStateContext } from '../context/useStateContext'
+import {BsSunFill, BsMoonFill} from 'react-icons/bs'
 
-const ThemeBoard =  ({themes, togglePicker, setThemeColors}) => {
+const ThemeBoard =  ({themes, togglePicker, setThemeColors, toggleDarkMode}) => {
+ //will import the params here
     return(
-<div className="theme-board">
+        <div className="theme-board">
+            <div className="dark-light-mode">
+                <BsSunFill className='light-mode' onClick={toggleDarkMode}/>
+                <BsMoonFill className='dark-mode' onClick={toggleDarkMode}/>
+            </div>
     <MdClose className='close-picker' onClick={togglePicker}/>
-
     <h5>Theme color</h5>
     <div className="theme-colors">        
         {themes.colors.map((el, i) => <div className="colors" key={i} style={{width:30, height:30, backgroundColor:el, border:"1px solid black"}} onClick={(e) => setThemeColors(el, 'theme')} ></div>)}
@@ -28,10 +33,10 @@ const ThemeBoard =  ({themes, togglePicker, setThemeColors}) => {
 }
 
 const ThemePicker = () => {
-    const {showPicker, togglePicker, themes, setThemeColors} = useStateContext()
+    const {showPicker, togglePicker, themes, setThemeColors, toggleDarkMode} = useStateContext()
     return (
      <>
-        {showPicker?<ThemeBoard themes={themes} togglePicker={togglePicker} setThemeColors={setThemeColors}/>:<MdBrush className="theme-icon" onClick={togglePicker}/>}
+        {showPicker?<ThemeBoard themes={themes} togglePicker={togglePicker} setThemeColors={setThemeColors} toggleDarkMode={toggleDarkMode} />:<MdBrush className="theme-icon" onClick={togglePicker}/>}
                 
      </>   
     );

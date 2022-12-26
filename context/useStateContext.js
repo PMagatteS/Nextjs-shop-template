@@ -42,6 +42,12 @@ export const StateContext = ({children}) => {
             root.style.setProperty("--cart-color", value);
         }
     }
+
+    const toggleDarkMode = () => {
+            const root = document.documentElement
+            const Theme = root.className === 'dark'? 'light': 'dark'
+            root.className = Theme        
+    }
     
 
     const updateItemQuantity = (action) => {
@@ -204,6 +210,7 @@ export const StateContext = ({children}) => {
             getSubtotal,
             updateCartItem,
             setThemeColors,
+            toggleDarkMode,
             }}>
             {children}
         </Context.Provider>
