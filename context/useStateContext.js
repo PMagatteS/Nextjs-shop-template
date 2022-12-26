@@ -16,7 +16,9 @@ export const StateContext = ({children}) => {
     const [filterBy, setFilterBy] = useState("");
     const themes = {
         colors: ["#180485", "#A4262C", "#CA5010", "#8F7034", "#407855", "#038387", "#0078D4", "#40587C", "#4052AB", "#854085"],
+        scolors: ["#8B81C1", "#A4262C", "#CA5010", "#8F7034", "#407855", "#038387", "#0078D4", "#40587C", "#4052AB", "#854085"],
         fonts : ["#faebd7", "#FFFFFF", "#F4F4F4", "#D0D0D0", "#3C3C3C", "#9ADFE1", "#C17EFF", "#FF94A9", "#CFCA88", "#000000"],
+        cart : ["#faebd7", "#FFFFFF", "#F4F4F4", "#D0D0D0"],
     }
 
     const toggleCart = () => {
@@ -34,8 +36,13 @@ export const StateContext = ({children}) => {
             root.style.setProperty("--primary-color", value);
         }else if(action==='font') {
             root.style.setProperty("--font-color", value);
+        }else if(action==='secondary') {
+            root.style.setProperty("--secondary-color", value);
+        }else if(action==='cart') {
+            root.style.setProperty("--cart-color", value);
         }
     }
+    
 
     const updateItemQuantity = (action) => {
         // will use this funtion for dynamic pages
