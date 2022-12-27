@@ -3,8 +3,8 @@ import {MdBrush, MdClose} from 'react-icons/md'
 import { useStateContext } from '../context/useStateContext'
 import {BsSunFill, BsMoonFill} from 'react-icons/bs'
 
-const ThemeBoard =  ({themes, togglePicker, setThemeColors, toggleDarkMode}) => {
- //will import the params here
+const ThemeBoard =  () => {
+ const {togglePicker, themes, setThemeColors, toggleDarkMode} = useStateContext()
     return(
         <div className="theme-board">
             <div className="dark-light-mode">
@@ -33,10 +33,10 @@ const ThemeBoard =  ({themes, togglePicker, setThemeColors, toggleDarkMode}) => 
 }
 
 const ThemePicker = () => {
-    const {showPicker, togglePicker, themes, setThemeColors, toggleDarkMode} = useStateContext()
+    const {showPicker, togglePicker} = useStateContext()
     return (
      <>
-        {showPicker?<ThemeBoard themes={themes} togglePicker={togglePicker} setThemeColors={setThemeColors} toggleDarkMode={toggleDarkMode} />:<MdBrush className="theme-icon" onClick={togglePicker}/>}
+        {showPicker?<ThemeBoard/>:<MdBrush className="theme-icon" onClick={togglePicker}/>}
                 
      </>   
     );
