@@ -28,7 +28,8 @@
   width: 75%;
   margin: auto;
   cursor: pointer;
-  background: #46216ec4;
+  /* background: #46216ec4; */
+  background: var(--primary-color);
 }
 
 .gridCentered{
@@ -40,13 +41,16 @@
   justify-self: center;
   display: flex;
   gap: 20px;
-  background: #7a428d52;
+  /* background: #7a428d52; */
+  background: var(--primary-color);
   border-radius: 100vh;
   width: 10em;
   height: 3em;
   align-items: center;
   justify-content: center;
 }
+
+
 
 .quantityText{
   font-size: 2em;
